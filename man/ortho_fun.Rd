@@ -8,12 +8,24 @@ ortho_fun(filenumber, ProcessedIMU, bandtowave, output = c("dataframe",
   "spatial", "none"), printtofile = T)
 }
 \arguments{
-\item{ProcessedIMU}{output from ortho fun}
+\item{filenumber}{number of the file to process}
 
-\item{framex}{frame of interest}
+\item{ProcessedIMU}{IMU file created through imu_framecombine, imu_demcombine, and imu_proc.}
 
-\item{sdf}{spectral data frame output from ortho fun}
+\item{bandtowave}{translates band number to wavelength in nm}
+
+\item{output}{should function return a non-spatial dataframe, a spatial (sf) file, or nothing?}
+
+\item{printtofile}{should the function write a spatial file to the processed files folder}
 }
 \description{
 This function is the big guy. wraps byframe_corr and spacing_fun, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
 }
+\keyword{UAV,}
+\keyword{broom}
+\keyword{ecological}
+\keyword{hyperspectral,}
+\keyword{orthorectification,}
+\keyword{push}
+\keyword{research}
+\keyword{sensor,}

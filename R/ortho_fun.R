@@ -1,10 +1,12 @@
 #' orthorectification of imagery
 #'
 #' This function is the big guy. wraps byframe_corr and spacing_fun, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
-#' @param framex frame of interest
-#' @param sdf spectral data frame output from ortho fun
-#' @param ProcessedIMU output from ortho fun
-#' @keywords 
+#' @param filenumber number of the file to process
+#' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
+#' @param bandtowave translates band number to wavelength in nm
+#' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
+#' @param printtofile should the function write a spatial file to the processed files folder
+#' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
 #' @export
 #' @examples
 
