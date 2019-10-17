@@ -12,7 +12,7 @@ ortho_fun(filenumber, ProcessedIMU, bandtowave, output = c("dataframe",
 
 \item{ProcessedIMU}{IMU file created through imu_framecombine, imu_demcombine, and imu_proc.}
 
-\item{bandtowave}{translates band number to wavelength in nm}
+\item{bandtowave}{dataframe that translates band number (1-272) to wavelength in nm (398-1000)}
 
 \item{output}{should function return a non-spatial dataframe, a spatial (sf) file, or nothing?}
 

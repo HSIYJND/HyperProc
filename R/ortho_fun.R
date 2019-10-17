@@ -3,7 +3,7 @@
 #' This function is the big guy. wraps byframe_corr and spacing_fun, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
 #' @param filenumber number of the file to process
 #' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
-#' @param bandtowave translates band number to wavelength in nm
+#' @param bandtowave dataframe that translates band number (1-272) to wavelength in nm (398-1000)
 #' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
 #' @param printtofile should the function write a spatial file to the processed files folder
 #' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
@@ -31,7 +31,7 @@ ortho_fun <- function(filenumber,ProcessedIMU,bandtowave,output = c("dataframe",
     
     #to fill in with the next function.
     sdf$Lat2 <- NA; sdf$Lon2 <- NA; sdf$Heading <- NA
-
+    no_cores <- detectCores()-1
     cl<-makeCluster(no_cores)
     clusterExport(cl,c("rbindlist","spacing_fun"))
     specdfOUT<- rbindlist(parLapply(cl,sort(unique(sdf$frame)),byframe_corr,sdf,ProcessedIMU))
