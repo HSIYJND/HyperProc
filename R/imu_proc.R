@@ -7,7 +7,7 @@
 
 
 
-imu_proc <- function(imu.datafile,FOVAngle,GroundLevel=0,minAlt_dem_atminIMU,degree=TRUE,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
+imu_proc <- function(imu.datafile,FOVAngle = 15.9619,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,degree=TRUE,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
   
  tmp <- imu.datafile
  # tmp<-imu.framematch
