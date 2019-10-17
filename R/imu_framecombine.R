@@ -29,8 +29,8 @@ assign("latMinIMU", latMinIMU, envir = .GlobalEnv)
 assign("lonMinIMU", lonMinIMU, envir = .GlobalEnv)
 
 
-# setDT(imu,key="Timestamp")
-# setDT(framematch,key="Timestamp")
+setDT(imu,key="Timestamp")
+setDT(framematch,key="Timestamp")
 # imu.framematch <- imu[framematch,roll=T]
 
 # return(imu.framematch)
