@@ -34,6 +34,6 @@ assign("lonMinIMU", lonMinIMU, envir = .GlobalEnv)
 # imu.framematch <- imu[framematch,roll=T]
 
 # return(imu.framematch)
-return(str(framematch))
+return(imu)
 
 }
