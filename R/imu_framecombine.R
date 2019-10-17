@@ -10,7 +10,7 @@
 
 imu_framecombine <- function(folderloc=paste0(RemoteSenDataLoc,FolderLoc),imu_filename="imu_gps.txt"){
   framelist <- list.files(folderloc,pattern = "frameIndex")
-  framematch <- rbindlist(lapply(framelist,function(x){fi<-fread(paste0(folderloc,x))}))
+  framematch <- as.data.frame(rbindlist(lapply(framelist,function(x){fi<-fread(paste0(folderloc,x))})))
 
 #coords.epsg = "32615" is utm 15n which is what I want here. "4326" is lat lon
 
