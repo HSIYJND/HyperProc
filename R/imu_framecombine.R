@@ -5,6 +5,7 @@
 #' @param imu_filename file name for imu_gps file, including extension .txt
 #' @keywords 
 #' @export
+#' @import data.table
 #' @examples
 #' imu_framecombine()
 
