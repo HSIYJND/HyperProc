@@ -5,7 +5,7 @@
 \title{IMU frame combine}
 \usage{
 imu_framecombine(folderloc = paste0(RemoteSenDataLoc, FolderLoc),
-  imu = "imu_gps.txt")
+  imu_filename = "imu_gps.txt")
 }
 \arguments{
 \item{folderloc}{where are the frame files located}
