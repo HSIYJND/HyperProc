@@ -15,15 +15,15 @@ imu_framecombine <- function(folderloc=paste0(RemoteSenDataLoc,FolderLoc),imu_fi
 #coords.epsg = "32615" is utm 15n which is what I want here. "4326" is lat lon
 
 imu <- read.delim(paste0(folderloc,imu_filename))
-if(length(is.na(imu$Alt)>0)){imu <- imu[!is.na(imu$Alt),]}
-imuxy <- imu[,c("Lon","Lat")]
-imusp <- SpatialPointsDataFrame(coords=imuxy,data=imu,proj4string = CRS("+init=epsg:4326")) 
-imusp <- spTransform(imusp,"+init=epsg:32615")
-imu <- as.data.frame(imusp[,!names(imusp) %in% c("Lon","Lat")])
+# if(length(is.na(imu$Alt)>0)){imu <- imu[!is.na(imu$Alt),]}
+# imuxy <- imu[,c("Lon","Lat")]
+# imusp <- SpatialPointsDataFrame(coords=imuxy,data=imu,proj4string = CRS("+init=epsg:4326"))
+# imusp <- spTransform(imusp,"+init=epsg:32615")
+# imu <- as.data.frame(imusp[,!names(imusp) %in% c("Lon","Lat")])
 # overallIMUmin <- min(imu$Alt)
 # latMinIMU <- imu$Lat[imu$Alt==min(imu$Alt)]
 # lonMinIMU <- imu$Lon[imu$Alt==min(imu$Alt)]
-# 
+#
 # assign("overallIMUmin", overallIMUmin, envir = .GlobalEnv)
 # assign("latMinIMU", latMinIMU, envir = .GlobalEnv)
 # assign("lonMinIMU", lonMinIMU, envir = .GlobalEnv)
