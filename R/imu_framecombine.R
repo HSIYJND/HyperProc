@@ -2,7 +2,7 @@
 #'
 #' This function combines frame numbers with timestamps and calculates min IMU and location of min IMU to later match with DEM and correct for spatial variation in ground level.
 #' @param folderloc where are the frame files located
-#' @param imu file name for imu_gps file, including extension .txt
+#' @param imu_filename file name for imu_gps file, including extension .txt
 #' @keywords 
 #' @export
 #' @examples
@@ -20,13 +20,13 @@ imuxy <- imu[,c("Lon","Lat")]
 imusp <- SpatialPointsDataFrame(coords=imuxy,data=imu,proj4string = CRS("+init=epsg:4326")) 
 imusp <- spTransform(imusp,"+init=epsg:32615")
 imu <- as.data.frame(imusp[,!names(imusp) %in% c("Lon","Lat")])
-overallIMUmin <- min(imu$Alt)
-latMinIMU <- imu$Lat[imu$Alt==min(imu$Alt)]
-lonMinIMU <- imu$Lon[imu$Alt==min(imu$Alt)]
-
-assign("overallIMUmin", overallIMUmin, envir = .GlobalEnv)
-assign("latMinIMU", latMinIMU, envir = .GlobalEnv)
-assign("lonMinIMU", lonMinIMU, envir = .GlobalEnv)
+# overallIMUmin <- min(imu$Alt)
+# latMinIMU <- imu$Lat[imu$Alt==min(imu$Alt)]
+# lonMinIMU <- imu$Lon[imu$Alt==min(imu$Alt)]
+# 
+# assign("overallIMUmin", overallIMUmin, envir = .GlobalEnv)
+# assign("latMinIMU", latMinIMU, envir = .GlobalEnv)
+# assign("lonMinIMU", lonMinIMU, envir = .GlobalEnv)
 
 
 setDT(imu,key="Timestamp")
