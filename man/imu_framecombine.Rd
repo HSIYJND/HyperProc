@@ -10,7 +10,7 @@ imu_framecombine(folderloc = paste0(RemoteSenDataLoc, FolderLoc),
 \arguments{
 \item{folderloc}{where are the frame files located}
 
-\item{imu}{file name for imu_gps file, including extension .txt}
+\item{imu_filename}{file name for imu_gps file, including extension .txt}
 }
 \description{
 This function combines frame numbers with timestamps and calculates min IMU and location of min IMU to later match with DEM and correct for spatial variation in ground level.
