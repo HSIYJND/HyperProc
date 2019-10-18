@@ -80,7 +80,7 @@ ortho_fun <- function(filenumber,ProcessedIMU,bandtowave="standard",output = c("
     sdf$Lat2 <- NA; sdf$Lon2 <- NA; sdf$Heading <- NA
     no_cores <- detectCores()-1
     cl<-makeCluster(no_cores)
-    clusterExport(cl,c("rbindlist","spacing_fun"))
+    clusterExport(cl,c("rbindlist"))
     specdfOUT<- rbindlist(parLapply(cl,sort(unique(sdf$frame)),byframe_corr,sdf,ProcessedIMU))
     stopCluster(cl)
     
