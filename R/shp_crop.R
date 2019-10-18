@@ -18,7 +18,7 @@ if("PLOT"%in%colnames(plotshp)==FALSE){plotshp$PLOT<-1}
 # #comment this out for faster test runs
 cl2<-makeCluster(no_cores)
 clusterExport(cl2,c("st_crs","st_crs<-","subset","st_as_sf","st_intersection","st_write","gBuffer"),envir=environment())
-parLapply(cl2,sort(unique(plotshp$Plot)),shpfile_plotloop,specdfOUT_sf,PlotShapeFile,filenumber,computer,ProcLoc)
+parLapply(cl2,sort(unique(plotshp$PLOT)),shpfile_plotloop,specdfOUT_sf,shpfile,filenumber,outputlocation)
 stopCluster(cl2)
 
 #commenting out for faster test runs

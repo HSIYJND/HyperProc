@@ -3,6 +3,8 @@
 #' This function is the big guy. wraps byframe_corr and spacing_fun, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
 #' @param filenumber number of the file to process
 #' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
+#' @param inputlocation where are the frame files located?
+#' @param outputlocation where do you want to processed files to go?
 #' @param bandtowave "standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)
 #' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
 #' @param printtofile should the function write a spatial file to the processed files folder
@@ -10,9 +12,9 @@
 #' @export
 #' @examples
 
-ortho_fun <- function(filenumber,ProcessedIMU,bandtowave="standard",output = c("dataframe","spatial","none"),printtofile=T){
+ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandtowave="standard",output = c("dataframe","spatial","none"),printtofile=T){
   
-  system.time(orig_sp <-caTools::read.ENVI(paste0(RemoteSenDataLoc,FolderLoc,"raw_",filenumber)))
+  system.time(orig_sp <-caTools::read.ENVI(paste0(inputlocation,"raw_",filenumber)))
   init.dim <- dim(orig_sp)
   dim(orig_sp) <- c(dim(orig_sp)[1]*dim(orig_sp)[2],dim(orig_sp)[3])
   sdf <- as.data.frame(orig_sp)
@@ -89,10 +91,11 @@ ortho_fun <- function(filenumber,ProcessedIMU,bandtowave="standard",output = c("
     specdfOUT_sp <- SpatialPointsDataFrame(coords=specdfOUT_xy,data=specdfOUT,proj4string = CRS("+init=epsg:32615")) 
     specdfOUT_sf <- st_as_sf(specdfOUT_sp)
 
-     if(printtofile==T){st_write(specdfOUT_sf,dsn=paste0(ProcLoc,"Final",filenumber,"full.shp"),layer=paste0("Final",filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
+     if(printtofile==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
      if(output=="dataframe"){return(specdfOUT)}
      if(output=="spatial"){return(specdfout_sf)}
-     if(output=="none"){return(paste("You Selected to have nothing returned"))}
+     if(output=="none"){return(paste("You Selected to have nothing returned"))
+       print("You selected to have nothing returned! Is that what you meant to do? Note: either have printtofile=T or something else selected for output (dataframe or spatial) ")}
     print(Sys.time())
     print(filenumber)
 }

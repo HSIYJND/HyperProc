@@ -1,7 +1,17 @@
 #' IMU process
 #'
 #' This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation
-#' @keywords 
+#' @param imu.datafile file made by imu_framecombine()
+#' @param FOVAngle Angle for the frame of view of the camera.
+#' @param degree are the values in degree? defaults to true. Else, values need to be radians
+#' @param GroundLevel should be the overall IMU minimum calculated in imu_framecombine(). Together with minAlt_dem_atminIMU, corrects for changes in ground level over space.
+#' @param minAlt_dem_atminIMU calculated in imu_demcombine(), corrects for changes in elevation/ground level over space
+#' @param coord.epsg epsg for the coordinates entered. If not 32615, will convert accordingly
+#' @param dem_rast created in imu_demcombine(), pulls ground level elevation at drone location to correct for changes over space
+#' @param YawCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
+#' @param PitchCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
+#' @param RollCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
+#' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
 #' @export
 #' @examples
 

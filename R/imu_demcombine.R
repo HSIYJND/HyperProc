@@ -10,14 +10,14 @@
 #' @examples
 #' imu_demcombine()
 
-imu_demcombine<-function(imu=imu.framematch,demfile="DEM 1m RESCUE/dem_1m_m.bil",latMin=latMinIMU,lonMin=lonMinIMU){
+imu_demcombine<-function(imu=imu.framematch,demfilelocation="~/Ortho_Proc/DEM 1m RESCUE/dem_1m_m.bil",latMin=latMinIMU,lonMin=lonMinIMU){
 
 #don't need to do this again
 imu.framexy <- imu[,c("Lon","Lat")]
 imu.framesp <- SpatialPointsDataFrame(coords=imu.framexy,data=imu,proj4string = CRS("+init=epsg:32615"))
 # imu.framesp <- spTransform(imu.framesp,"+init=epsg:32615")
 
-dem1m <- readGDAL(paste0(LocalSource,demfile))
+dem1m <- readGDAL(paste0(demfilelocation))
 dem1m <- spTransform(dem1m,"+init=epsg:32615")
 dem_rel <- crop(dem1m,extent(imu.framesp)+40)
 class(dem_rel)
