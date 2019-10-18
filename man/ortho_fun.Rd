@@ -4,13 +4,18 @@
 \alias{ortho_fun}
 \title{orthorectification of imagery}
 \usage{
-ortho_fun(filenumber, ProcessedIMU, bandtowave = "standard",
-  output = c("dataframe", "spatial", "none"), printtofile = T)
+ortho_fun(filenumber, ProcessedIMU, inputlocation, outputlocation,
+  bandtowave = "standard", output = c("dataframe", "spatial", "none"),
+  printtofile = T)
 }
 \arguments{
 \item{filenumber}{number of the file to process}
 
 \item{ProcessedIMU}{IMU file created through imu_framecombine, imu_demcombine, and imu_proc.}
+
+\item{inputlocation}{where are the frame files located?}
+
+\item{outputlocation}{where do you want to processed files to go?}
 
 \item{bandtowave}{"standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)}
 

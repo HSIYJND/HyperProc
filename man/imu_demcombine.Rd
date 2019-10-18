@@ -5,8 +5,8 @@
 \title{Combine DEM file with IMU}
 \usage{
 imu_demcombine(imu = imu.framematch,
-  demfile = "DEM 1m RESCUE/dem_1m_m.bil", latMin = latMinIMU,
-  lonMin = lonMinIMU)
+  demfilelocation = "~/Ortho_Proc/DEM 1m RESCUE/dem_1m_m.bil",
+  latMin = latMinIMU, lonMin = lonMinIMU)
 }
 \arguments{
 \item{imu}{processed imu/frame file}

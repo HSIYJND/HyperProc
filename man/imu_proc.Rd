@@ -8,6 +8,35 @@ imu_proc(imu.datafile, FOVAngle = 15.9619, GroundLevel = overallIMUmin,
   minAlt_dem_atminIMU, degree = TRUE, coords.epsg, dem_rast,
   YawCorrFactor = 0, PitchCorrFactor = 0, RollCorrFactor = 0)
 }
+\arguments{
+\item{imu.datafile}{file made by imu_framecombine()}
+
+\item{FOVAngle}{Angle for the frame of view of the camera.}
+
+\item{GroundLevel}{should be the overall IMU minimum calculated in imu_framecombine(). Together with minAlt_dem_atminIMU, corrects for changes in ground level over space.}
+
+\item{minAlt_dem_atminIMU}{calculated in imu_demcombine(), corrects for changes in elevation/ground level over space}
+
+\item{degree}{are the values in degree? defaults to true. Else, values need to be radians}
+
+\item{dem_rast}{created in imu_demcombine(), pulls ground level elevation at drone location to correct for changes over space}
+
+\item{YawCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
+
+\item{PitchCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
+
+\item{RollCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
+
+\item{coord.epsg}{epsg for the coordinates entered. If not 32615, will convert accordingly}
+}
 \description{
 This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation
 }
+\keyword{UAV,}
+\keyword{broom}
+\keyword{ecological}
+\keyword{hyperspectral,}
+\keyword{orthorectification,}
+\keyword{push}
+\keyword{research}
+\keyword{sensor,}

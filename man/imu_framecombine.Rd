@@ -4,11 +4,10 @@
 \alias{imu_framecombine}
 \title{IMU frame combine}
 \usage{
-imu_framecombine(folderloc = paste0(RemoteSenDataLoc, FolderLoc),
-  imu_filename = "imu_gps.txt")
+imu_framecombine(inputlocation, imu_filename = "imu_gps.txt")
 }
 \arguments{
-\item{folderloc}{where are the frame files located}
+\item{inputlocation}{where are the frame files located?}
 
 \item{imu_filename}{file name for imu_gps file, including extension .txt}
 }

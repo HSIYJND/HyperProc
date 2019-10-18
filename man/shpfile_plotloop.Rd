@@ -4,8 +4,8 @@
 \alias{shpfile_plotloop}
 \title{loops through plots of shapefile to extract spatial hyperspectral data files for each plot}
 \usage{
-shpfile_plotloop(plotnum, specdfOUT_sf, PlotShapeFile, filenumber,
-  computer = computer, ProcLoc = ProcLoc)
+shpfile_plotloop(plotnum, specdfOUT_sf, shpfile, filenumber,
+  outputlocation)
 }
 \description{
 for use in shp_crop
