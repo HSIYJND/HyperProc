@@ -4,15 +4,15 @@
 \alias{ortho_fun}
 \title{orthorectification of imagery}
 \usage{
-ortho_fun(filenumber, ProcessedIMU, bandtowave, output = c("dataframe",
-  "spatial", "none"), printtofile = T)
+ortho_fun(filenumber, ProcessedIMU, bandtowave = "standard",
+  output = c("dataframe", "spatial", "none"), printtofile = T)
 }
 \arguments{
 \item{filenumber}{number of the file to process}
 
 \item{ProcessedIMU}{IMU file created through imu_framecombine, imu_demcombine, and imu_proc.}
 
-\item{bandtowave}{dataframe that translates band number (1-272) to wavelength in nm (398-1000)}
+\item{bandtowave}{"standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)}
 
 \item{output}{should function return a non-spatial dataframe, a spatial (sf) file, or nothing?}
 

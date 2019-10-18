@@ -4,9 +4,9 @@
 \alias{imu_proc}
 \title{IMU process}
 \usage{
-imu_proc(imu.datafile, FOVAngle, GroundLevel = 0, minAlt_dem_atminIMU,
-  degree = TRUE, coords.epsg, dem_rast, YawCorrFactor = 0,
-  PitchCorrFactor = 0, RollCorrFactor = 0)
+imu_proc(imu.datafile, FOVAngle = 15.9619, GroundLevel = overallIMUmin,
+  minAlt_dem_atminIMU, degree = TRUE, coords.epsg, dem_rast,
+  YawCorrFactor = 0, PitchCorrFactor = 0, RollCorrFactor = 0)
 }
 \description{
 This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation
