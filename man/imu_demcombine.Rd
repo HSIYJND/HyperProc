@@ -4,14 +4,13 @@
 \alias{imu_demcombine}
 \title{Combine DEM file with IMU}
 \usage{
-imu_demcombine(imu = imu.framematch,
-  demfilelocation = "~/Ortho_Proc/DEM 1m RESCUE/dem_1m_m.bil",
+imu_demcombine(imu = imu.framematch, demfilelocation,
   latMin = latMinIMU, lonMin = lonMinIMU)
 }
 \arguments{
 \item{imu}{processed imu/frame file}
 
-\item{demfile}{name of dem that is within local subfolder}
+\item{demfile}{name and location of dem that is within local subfolder}
 
 \item{latmin}{latitude of min elevation in imu - typically takeoff point}
 

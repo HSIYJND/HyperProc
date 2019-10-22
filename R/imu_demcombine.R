@@ -2,7 +2,7 @@
 #'
 #' This function combines the imu/frame file with dem to calculate accurate height throughout the flight
 #' @param imu processed imu/frame file
-#' @param demfile name of dem that is within local subfolder
+#' @param demfile name and location of dem that is within local subfolder
 #' @param latmin latitude of min elevation in imu - typically takeoff point
 #' @param lonmin longitude of min elevation in imu - typically takeoff point
 #' @keywords 
@@ -10,7 +10,7 @@
 #' @examples
 #' imu_demcombine()
 
-imu_demcombine<-function(imu=imu.framematch,demfilelocation="~/Ortho_Proc/DEM 1m RESCUE/dem_1m_m.bil",latMin=latMinIMU,lonMin=lonMinIMU){
+imu_demcombine<-function(imu=imu.framematch,demfilelocation,latMin=latMinIMU,lonMin=lonMinIMU){
 
 #don't need to do this again
 imu.framexy <- imu[,c("Lon","Lat")]

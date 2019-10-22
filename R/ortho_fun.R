@@ -1,6 +1,6 @@
 #' orthorectification of imagery
 #'
-#' This function is the big guy. wraps byframe_corr and spacing_fun, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
+#' This function is the big guy. wraps byframe_corr, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
 #' @param filenumber number of the file to process
 #' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
 #' @param inputlocation where are the frame files located?

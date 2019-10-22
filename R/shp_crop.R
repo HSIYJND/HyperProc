@@ -1,8 +1,20 @@
 #' function to crop data to shapefiles from experiment with distinct plots
 #'
+#' This function merges experiment shape files with the newly created hyperspectral shapefile to crop plots out and/or take plot averages
+#' @param filenumber number of the file to process
+#' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
+#' @param inputlocation where are the frame files located?
+#' @param outputlocation where do you want to processed files to go?
+#' @param bandtowave "standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)
+#' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
+#' @param printtofile should the function write a spatial file to the processed files folder
+#' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
+#' @export
+#' @examples
 
 
-shp_crop<-function(proc_img=specdfOUT,shpfile){
+
+shp_crop<-function(proc_img=specdfOUT,shpfile,individualplotstofile=T){
   #if proc_img includes an extension, read in the file, if proc_img is a df already in r, make spatial.
   if(grepl(".shp",proc_img)){
    specdfOUT_sf <- st_read(proc_img)
@@ -16,10 +28,11 @@ colnames(plotshp)<-toupper(colnames(plotshp))
 if("PLOT"%in%colnames(plotshp)==FALSE){plotshp$PLOT<-1}
 
 # #comment this out for faster test runs
+if(individualplotstofile==T){
 cl2<-makeCluster(no_cores)
 clusterExport(cl2,c("st_crs","st_crs<-","subset","st_as_sf","st_intersection","st_write","gBuffer"),envir=environment())
 parLapply(cl2,sort(unique(plotshp$PLOT)),shpfile_plotloop,specdfOUT_sf,shpfile,filenumber,outputlocation)
-stopCluster(cl2)
+stopCluster(cl2)}
 
 #commenting out for faster test runs
 means_out <- over(plotshp,specdfOUT_sp,fn=mean)
