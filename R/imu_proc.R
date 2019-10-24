@@ -19,9 +19,8 @@
 
 imu_proc <- function(imu.datafile,FOVAngle = 15.9619,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,degree=TRUE,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
   
- tmp <- imu.datafile
- # tmp<-imu.framematch
- sp.tmpfordem <- SpatialPointsDataFrame(coords=tmp[,c("Lon","Lat")],data=tmp,proj4string = CRS(paste0("+init=epsg:",coords.epsg)))
+tmp <- imu.datafile
+sp.tmpfordem <- SpatialPointsDataFrame(coords=tmp[,c("Lon","Lat")],data=tmp,proj4string = CRS(paste0("+init=epsg:",coords.epsg)))
 sp.tmpTRfordem <- spTransform(sp.tmpfordem,"+init=epsg:32615")
 imuTR <- as.data.frame(sp.tmpTRfordem[,!(names(sp.tmpTRfordem)%in%c("Lon","Lat"))])
 
@@ -53,30 +52,22 @@ imuTR <- as.data.frame(sp.tmpTRfordem[,!(names(sp.tmpTRfordem)%in%c("Lon","Lat")
   tmp$RollCorrFactor <-  RollCorrFactor
   tmp$PitchCorrFactor <-  PitchCorrFactor
   tmp$YawCorrFactor <-  YawCorrFactor
-  
-  # TESTING (ignore)
-  # tmp<-data.frame(nrow=1)
-  # tmp$Roll <- degtorad(5)
-  # tmp$Pitch <- degtorad(5)
-  # tmp$Yaw <- degtorad(45)
-  # tmp$HeightAboveGround<-50
-  # tmp$FOVAngle <- degtorad(15.9619)
 
 
   
-  #ROLL -- Negative sign added 1/3/2019 in order to account for the reversal of what happens to the drone and which way the sensor points!
-   tmp$Rolloffset <- -tmp$HeightAboveGround*tan(tmp$Roll) #parallel to the frame's long direction (as specified by yaw), therefore:
-   tmp$RollYComponent <- -tmp$Rolloffset*sin(tmp$Yaw) ###(FOR NOW REMOVING THIS NEGATIVE SIGN TO SEE HOW THINGS LOOK!!!!!)#### THAT WAS WRONG PUTTING IT BACK IN
+  #ROLL -- this used to have (-) in calc of first and second thing -- but don't think any of that maybe should be there? I know I've tried this before
+   tmp$Rolloffset <- tmp$HeightAboveGround*tan(tmp$Roll) #parallel to the frame's long direction (as specified by yaw), therefore:
    tmp$RollXComponent <- tmp$Rolloffset*cos(tmp$Yaw)
+   tmp$RollYComponent <- tmp$Rolloffset*sin(tmp$Yaw) 
    
   #PITCH
   tmp$Pitchoffset <- tmp$HeightAboveGround*tan(tmp$Pitch) # orthogonal to the frame's long direction (as specified by the yaw), therefore:
-  tmp$PitchYComponent <-tmp$Pitchoffset*cos(tmp$Yaw)
   tmp$PitchXComponent <-tmp$Pitchoffset*sin(tmp$Yaw)
+  tmp$PitchYComponent <-tmp$Pitchoffset*cos(tmp$Yaw)
   
   #TOTAL
-  tmp$TotMidPointCorrectionY <- tmp$RollYComponent+tmp$PitchYComponent
   tmp$TotMidPointCorrectionX <- tmp$RollXComponent+tmp$PitchXComponent
+  tmp$TotMidPointCorrectionY <- tmp$RollYComponent+tmp$PitchYComponent
 
   
   #Change in FOV length due to ROLL. Potential to add PITCH to this to make it even more accurate. If pitch is not 0, the distance away will be even farther.
