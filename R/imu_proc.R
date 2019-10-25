@@ -87,7 +87,7 @@ tmp$RollCorrectedFOVmeters <- Tri1Base + Tri2Base
 
 #Yaw offset -- used in finding the endpoints -- left side will use -x and +y, right side will use +x and -y (with +yaw) -- Or vice versa -- check on this later -- I believe I swapped this around in the later code.
 tmp$YawYOffset<-0.5*tmp$RollCorrectedFOVmeters*sin(tmp$Yaw)
-tmp$YawXOffset<- 0.5*tmp$RollCorrectedFOVmeters*cos(tmp$Yaw) #this is negative of y #### REMOVED THIS NEG SIGN! Will that correct it?
+tmp$YawXOffset<- -0.5*tmp$RollCorrectedFOVmeters*cos(tmp$Yaw) #this is negative of y
   
 sp.tmp <- SpatialPointsDataFrame(coords=tmp[,c("Lon","Lat")],data=tmp,proj4string = CRS("+init=epsg:32615"))
 
