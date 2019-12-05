@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571247321967.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2295970216",
+    "id" : "351DB49E",
+    "lastKnownWriteTime" : 1571246909,
+    "last_content_update" : 1571246909,
+    "path" : "~/Documents/HyperPackage/HyperProc/R/imu_proc.R",
+    "project_path" : "R/imu_proc.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

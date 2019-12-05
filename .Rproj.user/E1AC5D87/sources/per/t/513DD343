@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571247320899.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "287826900",
+    "id" : "513DD343",
+    "lastKnownWriteTime" : 1571246106,
+    "last_content_update" : 1571246106,
+    "path" : "~/Documents/HyperPackage/HyperProc/R/imu_framecombine.R",
+    "project_path" : "R/imu_framecombine.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

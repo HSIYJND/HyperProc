@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571247319746.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "674865395",
+    "id" : "D6498EDD",
+    "lastKnownWriteTime" : 1571246617,
+    "last_content_update" : 1571246617,
+    "path" : "~/Documents/HyperPackage/HyperProc/R/imu_demcombine.R",
+    "project_path" : "R/imu_demcombine.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
