@@ -6,8 +6,9 @@
 #' @keywords 
 #' @export
 #' @import data.table
+#' @importFrom utils read.delim
 #' @examples
-#' imu_framecombine()
+
 
 imu_framecombine <- function(inputlocation,imu_filename="imu_gps.txt"){
   framelist <- list.files(inputlocation,pattern = "frameIndex")

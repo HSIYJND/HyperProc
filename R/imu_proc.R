@@ -6,7 +6,7 @@
 #' @param degree are the values in degree? defaults to true. Else, values need to be radians
 #' @param GroundLevel should be the overall IMU minimum calculated in imu_framecombine(). Together with minAlt_dem_atminIMU, corrects for changes in ground level over space.
 #' @param minAlt_dem_atminIMU calculated in imu_demcombine(), corrects for changes in elevation/ground level over space
-#' @param coord.epsg epsg for the coordinates entered. If not 32615, will convert accordingly
+#' @param coords.epsg epsg for the coordinates entered. If not 32615, will convert accordingly
 #' @param dem_rast created in imu_demcombine(), pulls ground level elevation at drone location to correct for changes over space
 #' @param YawCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
 #' @param PitchCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
@@ -17,8 +17,8 @@
 
 
 
-imu_proc <- function(imu.datafile,FOVAngle = 15.9619,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,degree=TRUE,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
-  
+imu_proc <- function(imu.datafile,FOVAngle = 15.9619,degree=TRUE,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
+
 tmp <- imu.datafile
 sp.tmpfordem <- SpatialPointsDataFrame(coords=tmp[,c("Lon","Lat")],data=tmp,proj4string = CRS(paste0("+init=epsg:",coords.epsg)))
 sp.tmpTRfordem <- spTransform(sp.tmpfordem,"+init=epsg:32615")

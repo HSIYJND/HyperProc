@@ -2,13 +2,14 @@
 #'
 #' This function combines the imu/frame file with dem to calculate accurate height throughout the flight
 #' @param imu processed imu/frame file
-#' @param demfile name and location of dem that is within local subfolder
-#' @param latmin latitude of min elevation in imu - typically takeoff point
-#' @param lonmin longitude of min elevation in imu - typically takeoff point
-#' @keywords 
+#' @param demfilelocation name and location of dem that is within local subfolder
+#' @param latMin latitude of min elevation in imu - typically takeoff point
+#' @param lonMin longitude of min elevation in imu - typically takeoff point
+#' @keywords
+#' @importFrom raster extract raster extent crs crop cv rasterize crs<- extent<- nrow<- ncol<-
+#' @import rgdal 
 #' @export
 #' @examples
-#' imu_demcombine()
 
 imu_demcombine<-function(imu=imu.framematch,demfilelocation,latMin=latMinIMU,lonMin=lonMinIMU){
 

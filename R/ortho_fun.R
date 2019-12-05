@@ -9,6 +9,10 @@
 #' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
 #' @param printtofile should the function write a spatial file to the processed files folder
 #' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
+#' @import caTools
+#' @import sp
+#' @import sf
+#' @import parallel
 #' @export
 #' @examples
 

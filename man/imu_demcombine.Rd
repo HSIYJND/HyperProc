@@ -10,15 +10,12 @@ imu_demcombine(imu = imu.framematch, demfilelocation,
 \arguments{
 \item{imu}{processed imu/frame file}
 
-\item{demfile}{name and location of dem that is within local subfolder}
+\item{demfilelocation}{name and location of dem that is within local subfolder}
 
-\item{latmin}{latitude of min elevation in imu - typically takeoff point}
+\item{latMin}{latitude of min elevation in imu - typically takeoff point}
 
-\item{lonmin}{longitude of min elevation in imu - typically takeoff point}
+\item{lonMin}{longitude of min elevation in imu - typically takeoff point}
 }
 \description{
 This function combines the imu/frame file with dem to calculate accurate height throughout the flight
-}
-\examples{
-imu_demcombine()
 }

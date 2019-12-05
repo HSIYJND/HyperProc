@@ -1,18 +1,11 @@
 #' function to crop data to shapefiles from experiment with distinct plots
 #'
 #' This function merges experiment shape files with the newly created hyperspectral shapefile to crop plots out and/or take plot averages
-#' @param filenumber number of the file to process
-#' @param ProcessedIMU IMU file created through imu_framecombine, imu_demcombine, and imu_proc.
-#' @param inputlocation where are the frame files located?
-#' @param outputlocation where do you want to processed files to go?
-#' @param bandtowave "standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)
-#' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
-#' @param printtofile should the function write a spatial file to the processed files folder
-#' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
+#' @param proc_img processed hyperspectral data, can be df, spatial dataframe, or file name and location
+#' @param shpfile shapefile of experiment with plots
+#' @param individualplotstofile do you want to make each plot an individual shapefile?
 #' @export
 #' @examples
-
-
 
 shp_crop<-function(proc_img=specdfOUT,shpfile,individualplotstofile=T){
   #if proc_img includes an extension, read in the file, if proc_img is a df already in r, make spatial.
@@ -48,5 +41,6 @@ tot_out <-cbind(means_out,cv_out)
 
 # tot_out <- data.frame(thisisatest=c(1,2,3,4)) #this is for when I comment out the actual calculations to check the loop
 return(tot_out)
+
 }
 

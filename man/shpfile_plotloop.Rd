@@ -2,11 +2,22 @@
 % Please edit documentation in R/shpfile_plotloop.R
 \name{shpfile_plotloop}
 \alias{shpfile_plotloop}
-\title{loops through plots of shapefile to extract spatial hyperspectral data files for each plot}
+\title{loops through plots of shapefile to extract spatial hyperspectral data files for each plot, for use within shp_crop}
 \usage{
 shpfile_plotloop(plotnum, specdfOUT_sf, shpfile, filenumber,
   outputlocation)
 }
+\arguments{
+\item{plotnum}{number of the plot of interest}
+
+\item{specdfOUT_sf}{Hyperspectral spatial file}
+
+\item{shpfile}{shapefile for experiment with individual plots}
+
+\item{filenumber}{filenumber of original hyperspectral (raw) block}
+
+\item{outputlocation}{where to put the new file}
+}
 \description{
-for use in shp_crop
+loops through plots of shapefile to extract spatial hyperspectral data files for each plot, for use within shp_crop
 }

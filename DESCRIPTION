@@ -1,8 +1,10 @@
 Package: HyperProc
-Title: Orthorectification of UAV collected Hyperspectral Data
+Title: Orthorectification of UAV Collected Hyperspectral Data
 Version: 0.0.0.9000
 Author: Jane Cowles
 Maintainer: Jane Cowles <jcowles@umn.edu>
-Description: This package contains functions to convert extensionless bil files created by hyperspectral sensors on board an unmanned aerial vehicle (UAV, drone) or airplane with imu/gps device to orthorectified usable imagery for analysis. Hyperspectral data differs from many other aerial imagery types in that it is collected in a "push broom" style, leading to data that is a set of linear arranged pixels, rather than a 2d datafile. These lines of pixels need to be arranged according to the orientation of the aircraft. This package does that, avoiding point-and-click software to allow replicability and transparency.
+Description: Converts extensionless bil files created by hyperspectral sensors on board an unmanned aerial vehicle (UAV, drone) or airplane with imu/gps device to orthorectified usable imagery for analysis. Hyperspectral data differs from many other aerial imagery types in that it is collected in a "push broom" style, leading to data that is a set of linear arranged pixels, rather than a 2d datafile. These lines of pixels need to be arranged according to the orientation of the aircraft. This package does that, avoiding point-and-click software to allow replicability and transparency.
+License: GPL (>=2)
 Encoding: UTF-8
-Imports: data.table
+Imports: data.table, caTools, raster, rgdal, sp, sf, parallel, rgeos
+RoxygenNote: 6.1.1
