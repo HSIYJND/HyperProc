@@ -18,7 +18,7 @@
 #' @examples
 #' ortho_fun()
 
-ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandtowave="standard",output = c("dataframe","spatial","none"),printtofile=T){
+ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandtowave="standard",output = c("dataframe","spatial","none"),printtospatial=F,printtocsv=T){
   
   system.time(orig_sp <-caTools::read.ENVI(paste0(inputlocation,"raw_",filenumber)))
   init.dim <- dim(orig_sp)
@@ -96,8 +96,8 @@ ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandt
     specdfOUT_xy <- specdfOUT[,c("Lon2","Lat2")]
     specdfOUT_sp <- SpatialPointsDataFrame(coords=specdfOUT_xy,data=specdfOUT,proj4string = CRS("+init=epsg:32615")) 
     specdfOUT_sf <- st_as_sf(specdfOUT_sp)
-
-     if(printtofile==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
+     if(printtocsv==T){data.table::fwrite(specdfOUT,file=paste0(outputlocation,"processed",filenumber,"full.csv"))}
+     if(printtospatial==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
      if(output=="dataframe"){return(specdfOUT)}
      if(output=="spatial"){return(specdfout_sf)}
      if(output=="none"){return(paste("You Selected to have nothing returned"))

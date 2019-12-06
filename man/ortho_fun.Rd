@@ -6,7 +6,7 @@
 \usage{
 ortho_fun(filenumber, ProcessedIMU, inputlocation, outputlocation,
   bandtowave = "standard", output = c("dataframe", "spatial", "none"),
-  printtofile = T)
+  printtospatial = F, printtocsv = T)
 }
 \arguments{
 \item{filenumber}{number of the file to process}
