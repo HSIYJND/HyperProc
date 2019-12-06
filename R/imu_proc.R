@@ -56,10 +56,10 @@ imuTR <- as.data.frame(sp.tmpTRfordem[,!(names(sp.tmpTRfordem)%in%c("Lon","Lat")
 
 
   
-  #ROLL -- this used to have (-) in calc of first and second thing -- but don't think any of that maybe should be there? I know I've tried this before
-   tmp$Rolloffset <- tmp$HeightAboveGround*tan(tmp$Roll) #parallel to the frame's long direction (as specified by yaw), therefore:
+  #ROLL -- this used to have (-) in calc of main and Y parts -- just added back in to test -- but don't think any of that maybe should be there? I know I've tried this before
+   tmp$Rolloffset <- -tmp$HeightAboveGround*tan(tmp$Roll) #parallel to the frame's long direction (as specified by yaw), therefore:
    tmp$RollXComponent <- tmp$Rolloffset*cos(tmp$Yaw)
-   tmp$RollYComponent <- tmp$Rolloffset*sin(tmp$Yaw) 
+   tmp$RollYComponent <- -tmp$Rolloffset*sin(tmp$Yaw) 
    
   #PITCH
   tmp$Pitchoffset <- tmp$HeightAboveGround*tan(tmp$Pitch) # orthogonal to the frame's long direction (as specified by the yaw), therefore:
