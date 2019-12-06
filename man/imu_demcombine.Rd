@@ -19,3 +19,6 @@ imu_demcombine(imu = imu.framematch, demfilelocation,
 \description{
 This function combines the imu/frame file with dem to calculate accurate height throughout the flight
 }
+\examples{
+imu_demcombine()
+}

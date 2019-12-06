@@ -6,6 +6,7 @@
 #' @param individualplotstofile do you want to make each plot an individual shapefile?
 #' @export
 #' @examples
+#' shp_crop()
 
 shp_crop<-function(proc_img=specdfOUT,shpfile,individualplotstofile=T){
   #if proc_img includes an extension, read in the file, if proc_img is a df already in r, make spatial.

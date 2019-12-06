@@ -10,6 +10,7 @@
 #' @import rgdal 
 #' @export
 #' @examples
+#' imu_demcombine()
 
 imu_demcombine<-function(imu=imu.framematch,demfilelocation,latMin=latMinIMU,lonMin=lonMinIMU){
 

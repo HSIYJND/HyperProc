@@ -21,3 +21,6 @@ shpfile_plotloop(plotnum, specdfOUT_sf, shpfile, filenumber,
 \description{
 loops through plots of shapefile to extract spatial hyperspectral data files for each plot, for use within shp_crop
 }
+\examples{
+shpfile_plotloop()
+}

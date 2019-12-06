@@ -33,6 +33,9 @@ imu_proc(imu.datafile, FOVAngle = 15.9619, degree = TRUE,
 \description{
 This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation
 }
+\examples{
+imu_proc()
+}
 \keyword{UAV,}
 \keyword{broom}
 \keyword{ecological}

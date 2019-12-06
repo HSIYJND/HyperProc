@@ -14,6 +14,7 @@
 #' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
 #' @export
 #' @examples
+#' imu_proc()
 
 
 

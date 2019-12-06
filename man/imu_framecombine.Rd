@@ -14,3 +14,6 @@ imu_framecombine(inputlocation, imu_filename = "imu_gps.txt")
 \description{
 This function combines frame numbers with timestamps and calculates min IMU and location of min IMU to later match with DEM and correct for spatial variation in ground level.
 }
+\examples{
+imu_framecombine()
+}

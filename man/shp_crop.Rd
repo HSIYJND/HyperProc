@@ -16,3 +16,6 @@ shp_crop(proc_img = specdfOUT, shpfile, individualplotstofile = T)
 \description{
 This function merges experiment shape files with the newly created hyperspectral shapefile to crop plots out and/or take plot averages
 }
+\examples{
+shp_crop()
+}

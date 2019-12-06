@@ -7,6 +7,7 @@
 #' @import rgeos
 #' @export
 #' @examples
+#' shpfile_plotloop()
 
 
 shpfile_plotloop <-function(plotnum,specdfOUT_sf,shpfile,filenumber,outputlocation){

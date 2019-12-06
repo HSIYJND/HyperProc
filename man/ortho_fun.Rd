@@ -26,6 +26,9 @@ ortho_fun(filenumber, ProcessedIMU, inputlocation, outputlocation,
 \description{
 This function is the big guy. wraps byframe_corr, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder
 }
+\examples{
+ortho_fun()
+}
 \keyword{UAV,}
 \keyword{broom}
 \keyword{ecological}
