@@ -21,7 +21,9 @@ ortho_fun(filenumber, ProcessedIMU, inputlocation, outputlocation,
 
 \item{output}{should function return a non-spatial dataframe, a spatial (sf) file, or nothing?}
 
-\item{printtofile}{should the function write a spatial file to the processed files folder}
+\item{printtospatial}{should the function write a spatial file to the processed files folder, defaults to F}
+
+\item{printtocsv}{should the function write a csv file to the processed files folder, defaults to T}
 }
 \description{
 This function is the big guy. wraps byframe_corr, orthorectifies an extensionless bil file that is output by a headwall nano sensor and outputs a dataframe, a sf file, or writes an sf file to folder

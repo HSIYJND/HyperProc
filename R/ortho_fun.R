@@ -7,7 +7,8 @@
 #' @param outputlocation where do you want to processed files to go?
 #' @param bandtowave "standard" uses normal headwall nano values, else call in dataframe that translates band number (1-272) to wavelength in nm (398-1000)
 #' @param output should function return a non-spatial dataframe, a spatial (sf) file, or nothing?
-#' @param printtofile should the function write a spatial file to the processed files folder
+#' @param printtospatial should the function write a spatial file to the processed files folder, defaults to F
+#' @param printtocsv should the function write a csv file to the processed files folder, defaults to T
 #' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
 #' @import data.table
 #' @import caTools
