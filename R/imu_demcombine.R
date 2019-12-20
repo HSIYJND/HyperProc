@@ -21,6 +21,18 @@ imu.framesp <- SpatialPointsDataFrame(coords=imu.framexy,data=imu,proj4string = 
 
 dem1m <- readGDAL(paste0(demfilelocation))
 dem1m <- spTransform(dem1m,"+init=epsg:32615")
+
+dem_formin <- crop(dem1m,extent(SpatialPoints(cbind(lonMin,latMin)))+5)
+rast0 <- raster()
+extent(rast0)<- extent(dem_formin)
+ncol(rast0)<-5
+nrow(rast0)<-5
+dem_rastformin <- rasterize(dem_formin,rast0,dem_formin$band1,fun=mean)
+crs(dem_rastformin)<-crs(dem_formin)
+minAlt_dem_atminIMU <- raster::extract(dem_rastformin,SpatialPoints(cbind(lonMin,latMin)),buffer=2,fun=mean,na.rm=T)
+assign("minAlt_dem_atminIMU", minAlt_dem_atminIMU, envir = .GlobalEnv)
+
+
 dem_rel <- crop(dem1m,extent(imu.framesp)+40)
 class(dem_rel)
 dem_sf <- st_as_sf(dem_rel)
@@ -38,8 +50,6 @@ nrow(rast) <- round((extent(dem_rel)@ymax-extent(dem_rel)@ymin)/2)
 # of your points using the cells of rast, values from the IP field:
 dem_rast <- rasterize(dem_rel, rast, dem_rel$band1, fun=mean) 
 crs(dem_rast)<-crs(dem_rel)
-minAlt_dem_atminIMU <- raster::extract(dem_rast,SpatialPoints(cbind(lonMin,latMin)),buffer=2,fun=mean,na.rm=T)
-assign("minAlt_dem_atminIMU", minAlt_dem_atminIMU, envir = .GlobalEnv)
 
 return(dem_rast)
 
