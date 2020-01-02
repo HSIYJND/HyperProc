@@ -98,12 +98,13 @@ ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandt
     specdfOUT_xy <- specdfOUT[,c("Lon2","Lat2")]
     specdfOUT_sp <- SpatialPointsDataFrame(coords=specdfOUT_xy,data=specdfOUT,proj4string = CRS("+init=epsg:32615")) 
     specdfOUT_sf <- st_as_sf(specdfOUT_sp)
+    if(printtospatial==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
+    if(output=="spatial"){return(specdfout_sf)}
     }
      if(printtocsv==T){data.table::fwrite(specdfOUT,file=paste0(outputlocation,"processed",filenumber,"full.csv"))}
-     if(printtospatial==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
      if(output=="dataframe"){return(specdfOUT)}
-     if(output=="spatial"){return(specdfout_sf)}
-     if(output=="none"){return(paste("You Selected to have nothing returned"))
+     if(output=="none"){
+       return(paste("You Selected to have nothing returned"))
        print("You selected to have nothing returned! Is that what you meant to do? Note: either have printtofile=T or something else selected for output (dataframe or spatial) ")}
     print(Sys.time())
     print(filenumber)
