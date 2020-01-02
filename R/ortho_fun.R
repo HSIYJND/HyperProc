@@ -94,9 +94,11 @@ ortho_fun <- function(filenumber,ProcessedIMU,inputlocation,outputlocation,bandt
     stopCluster(cl)
     
     specdfOUT$StartFrame <- filenumber
+    if(printtospatial==T|output=="spatial"){
     specdfOUT_xy <- specdfOUT[,c("Lon2","Lat2")]
     specdfOUT_sp <- SpatialPointsDataFrame(coords=specdfOUT_xy,data=specdfOUT,proj4string = CRS("+init=epsg:32615")) 
     specdfOUT_sf <- st_as_sf(specdfOUT_sp)
+    }
      if(printtocsv==T){data.table::fwrite(specdfOUT,file=paste0(outputlocation,"processed",filenumber,"full.csv"))}
      if(printtospatial==T){st_write(specdfOUT_sf,dsn=paste0(outputlocation,"processed",filenumber,"full.shp"),layer=paste0(filenumber,"full"),driver="ESRI Shapefile",update = TRUE)}
      if(output=="dataframe"){return(specdfOUT)}
