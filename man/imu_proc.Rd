@@ -4,10 +4,19 @@
 \alias{imu_proc}
 \title{IMU process}
 \usage{
-imu_proc(imu.datafile, FOVAngle = 15.9619, degree = TRUE,
-  GroundLevel = overallIMUmin, minAlt_dem_atminIMU, coords.epsg,
-  dem_rast, YawCorrFactor = 0, PitchCorrFactor = 0,
-  RollCorrFactor = 0)
+imu_proc(
+  imu.datafile,
+  FOVAngle = 15.9619,
+  degree = TRUE,
+  GroundLevel = overallIMUmin,
+  minAlt_dem_atminIMU,
+  coords.epsg,
+  dem_rast,
+  YawCorrFactor = 0,
+  PitchCorrFactor = 0,
+  RollCorrFactor = 0,
+  ManualHeightAboveGround = FALSE
+)
 }
 \arguments{
 \item{imu.datafile}{file made by imu_framecombine()}
@@ -29,6 +38,8 @@ imu_proc(imu.datafile, FOVAngle = 15.9619, degree = TRUE,
 \item{PitchCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
 
 \item{RollCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
+
+\item{ManualHeightAboveGround}{if FALSE, use DEM and IMU measured height, if value, sets height above ground to constant value based on flight plan (in meters)}
 }
 \description{
 This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation

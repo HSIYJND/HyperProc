@@ -7,4 +7,4 @@ Description: Converts extensionless bil files created by hyperspectral sensors o
 License: GPL (>=2)
 Encoding: UTF-8
 Imports: data.table, caTools, raster, rgdal, sp, sf, parallel, rgeos
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

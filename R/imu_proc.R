@@ -11,6 +11,7 @@
 #' @param YawCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
 #' @param PitchCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
 #' @param RollCorrFactor ability to tune algorithm if error in GPS prevents perfect orthorectification
+#' @param ManualHeightAboveGround if FALSE, use DEM and IMU measured height, if value, sets height above ground to constant value based on flight plan (in meters)
 #' @keywords orthorectification, UAV, hyperspectral, push broom sensor, ecological research
 #' @export
 #' @examples
@@ -18,13 +19,13 @@
 
 
 
-imu_proc <- function(imu.datafile,FOVAngle = 15.9619,degree=TRUE,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0){
+imu_proc <- function(imu.datafile,FOVAngle = 15.9619,degree=TRUE,GroundLevel=overallIMUmin,minAlt_dem_atminIMU,coords.epsg,dem_rast,YawCorrFactor=0,PitchCorrFactor=0,RollCorrFactor=0,ManualHeightAboveGround=FALSE){
 
 tmp <- imu.datafile
 sp.tmpfordem <- SpatialPointsDataFrame(coords=tmp[,c("Lon","Lat")],data=tmp,proj4string = CRS(paste0("+init=epsg:",coords.epsg)))
 sp.tmpTRfordem <- spTransform(sp.tmpfordem,"+init=epsg:32615")
 imuTR <- as.data.frame(sp.tmpTRfordem[,!(names(sp.tmpTRfordem)%in%c("Lon","Lat"))])
-
+if(ManualHeightAboveGround==FALSE){
  dem_alt <- raster::extract(dem_rast,imuTR[,c("Lon","Lat")],df=T)
  dem_alt$Frame. <- imuTR$Frame.
  dem_alt$DEMAlt <- dem_alt$layer
@@ -33,6 +34,8 @@ imuTR <- as.data.frame(sp.tmpTRfordem[,!(names(sp.tmpTRfordem)%in%c("Lon","Lat")
  tmp$AdjGroundLevel <- GroundLevel+(tmp$DEMAlt-minAlt_dem_atminIMU)
  tmp$HeightAboveGround <- tmp$Alt-tmp$AdjGroundLevel
  tmp$HeightAboveGroundOLD <- tmp$Alt-GroundLevel
+}else tmp$HeightAboveGround <- as.numeric(ManualHeightAboveGround)
+
  
     if(degree==TRUE){
     tmp$FOVAngle <- degtorad(FOVAngle)

@@ -4,8 +4,12 @@
 \alias{imu_demcombine}
 \title{Combine DEM file with IMU}
 \usage{
-imu_demcombine(imu = imu.framematch, demfilelocation,
-  latMin = latMinIMU, lonMin = lonMinIMU)
+imu_demcombine(
+  imu = imu.framematch,
+  demfilelocation,
+  latMin = latMinIMU,
+  lonMin = lonMinIMU
+)
 }
 \arguments{
 \item{imu}{processed imu/frame file}
