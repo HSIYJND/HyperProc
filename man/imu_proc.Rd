@@ -14,8 +14,7 @@ imu_proc(
   dem_rast,
   YawCorrFactor = 0,
   PitchCorrFactor = 0,
-  RollCorrFactor = 0,
-  ManualHeightAboveGround = FALSE
+  RollCorrFactor = 0
 )
 }
 \arguments{
@@ -38,8 +37,6 @@ imu_proc(
 \item{PitchCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
 
 \item{RollCorrFactor}{ability to tune algorithm if error in GPS prevents perfect orthorectification}
-
-\item{ManualHeightAboveGround}{if FALSE, use DEM and IMU measured height, if value, sets height above ground to constant value based on flight plan (in meters)}
 }
 \description{
 This function calculates the corrections for imagery location given the roll, yaw, pitch, and elevation
